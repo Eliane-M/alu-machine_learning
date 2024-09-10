@@ -4,6 +4,7 @@
     calculates and returns its shape.
 '''
 
+
 def matrix_shape(matrix):
     '''
         Calculates the shape of a matrix
