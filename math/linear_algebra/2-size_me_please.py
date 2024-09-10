@@ -9,4 +9,3 @@ def matrix_shape(matrix):
         mat_shape.append(len(matrix))
         matrix = matrix[0]
     return mat_shape
-
