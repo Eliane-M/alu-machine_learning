@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 '''
-    Given a list of lists (matrix), this function calculates and returns its shape.
+    Given a list of lists (matrix), this function
+    calculates and returns its shape.
 '''
 
 def matrix_shape(matrix):
