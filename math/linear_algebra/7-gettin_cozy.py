@@ -24,7 +24,7 @@ def cat_matrices2D(mat1, mat2, axis=0):
     # Vertical concatenation (along rows)
     if axis == 0:
         result.extend([row[:] for row in mat2])
-    
+
     # Horizontal concatenation (along columns)
     elif axis == 1:
         for i in range(row1):
