@@ -6,6 +6,8 @@ along a specific axis
 
 
 import numpy as np
+
+
 def np_cat(mat1, mat2, axis=0):
     """
     Concatenates two ndarray matrices along
