@@ -10,16 +10,18 @@ def determinant(matrix):
     """
 
     # check if the matrix is a list of lists
-    if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
+    if not isinstance(matrix, list) or not all(isinstance(row, list)
+                                               for row in matrix):
         raise TypeError("matrix must be a list of lists")
     if matrix == []:
         raise TypeError("matrix must be a list of lists")
 
-    #check if the matrix is a square matrix
-    if matrix != [[]] and (len(matrix) != len(matrix[0])):
+    # check if the matrix is a square matrix
+    if len(set(len(row)
+               for row in matrix)) != 1 or len(matrix) != len(matrix[0]):
         raise ValueError("matrix must be a square matrix")
 
-    #for a 0x0 matrix
+    # for a 0x0 matrix
     if matrix == [[]]:
         return 1
 
@@ -36,7 +38,8 @@ def determinant(matrix):
 
     # iterate over the first row
     for i in range(len(matrix)):
-        submatrix = [[row[j] for j in range(len(matrix)) if j != i] for row in matrix[1:]]
+        submatrix = [[row[j] for j in range(len(matrix)) if j != i]
+                     for row in matrix[1:]]
         det += (-1) ** i * matrix[0][i] * determinant(submatrix)
-    
+
     return det
