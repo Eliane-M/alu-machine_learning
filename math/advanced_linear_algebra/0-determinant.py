@@ -16,14 +16,14 @@ def determinant(matrix):
     if matrix == []:
         raise TypeError("matrix must be a list of lists")
 
+    # for a 0x0 matrix
+    if matrix == [[]]:
+        return 1
+
     # check if the matrix is a square matrix
     if len(set(len(row)
                for row in matrix)) != 1 or len(matrix) != len(matrix[0]):
         raise ValueError("matrix must be a square matrix")
-
-    # for a 0x0 matrix
-    if matrix == [[]]:
-        return 1
 
     # For a 1x1 matrix
     if len(matrix) == 1:
