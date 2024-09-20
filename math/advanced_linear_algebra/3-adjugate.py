@@ -15,16 +15,16 @@ def adjugate(matrix):
         raise TypeError("matrix must be a list of lists")
     if matrix == []:
         raise TypeError("matrix must be a list of lists")
-    
+
     # check if the matrix is square or not empty
     if len(set(len(row)
                for row in matrix)) != 1 or len(matrix) != len(matrix[0]):
         raise ValueError("matrix must be a non-empty square matrix")
-    
+
     n = len(matrix)
     if n == 1:
         return [[1]]
-    
+
     def minor(mat, i, j):
         """Calculate the minor of matrix mat for element at (i, j)."""
         return [row[:j] + row[j + 1:] for row in (mat[:i] + mat[i + 1:])]
