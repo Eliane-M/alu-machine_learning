@@ -22,8 +22,8 @@ def inverse(matrix):
         raise ValueError("matrix must be a non-empty square matrix")
 
     n = len(matrix)
-    if n == 1:
-        return [[1]]
+    # if n == 1:
+    #     return [[1]]
 
     def minor(mat, i, j):
         """Calculate the minor of matrix mat for element at (i, j)."""
