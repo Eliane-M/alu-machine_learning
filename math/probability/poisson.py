@@ -4,6 +4,9 @@ This class represents a poisson distribution
 """
 
 
+import math
+
+
 class Poisson:
     """Represents a Poisson distribution."""
 
@@ -23,3 +26,21 @@ class Poisson:
                 raise ValueError("data must contain multiple values")
             # Calculate lambtha as the average of data points
             self.lambtha = float(sum(data) / len(data))
+
+
+    def pmf(self, k):
+        """Calculate the PMF for the Poisson distribution."""
+        # Validate k is an integer
+        if k < 0:
+            return 0
+        
+        # Convert k to an integer if it's not already
+        k = int(k)
+        
+        # PMF formula for Poisson distribution: P(k) = (lambtha^k * e^-lambtha) / k!
+        try:
+            pmf_value = (self.lambtha ** k) * (
+                math.exp(-self.lambtha)) / math.factorial(k)
+            return pmf_value
+        except OverflowError:
+            return 0
