@@ -24,7 +24,6 @@ class Poisson:
             # Calculate lambtha as the average of data points
             self.lambtha = float(sum(data) / len(data))
 
-
     def factorial(self, n):
         """Calculates the factorial of n."""
         if n == 0 or n == 1:
@@ -48,16 +47,16 @@ class Poisson:
         # Validate k is an integer
         if k < 0:
             return 0
-        
+
         # Convert k to an integer if it's not already
         k = int(k)
-        
-        # PMF formula for Poisson distribution: P(k) = (lambtha^k * e^-lambtha) / k!
+
+        # PMF formula: P(k)=(lambtha^k * e^-lambtha) / k!
         lambtha_pow_k = 1
         for _ in range(k):
             lambtha_pow_k *= self.lambtha
-        
+
         exp_neg_lambtha = 1 / self.exp(self.lambtha)
-        
+
         pmf_value = (lambtha_pow_k * exp_neg_lambtha) / self.factorial(k)
         return pmf_value
