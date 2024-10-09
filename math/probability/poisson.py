@@ -60,7 +60,7 @@ class Poisson:
 
         pmf_value = (lambtha_pow_k * exp_neg_lambtha) / self.factorial(k)
         return pmf_value
-    
+
     def cdf(self, k):
         """Calculates the CDF for a given number of 'successes' k."""
         if k < 0:
