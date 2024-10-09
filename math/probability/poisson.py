@@ -52,7 +52,7 @@ class Poisson:
         k = int(k)
 
         # PMF formula: P(k)=(lambtha^k * e^-lambtha) / k!
-        lambtha_pow_k = 1
+        lambtha_pow_k = 1.0
         for _ in range(k):
             lambtha_pow_k *= self.lambtha
 
