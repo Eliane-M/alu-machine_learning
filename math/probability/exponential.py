@@ -21,7 +21,7 @@ class Exponential():
             # Calculate lambtha as the inverse of the mean of the data
             self.lambtha = float(1 / (sum(data) / len(data)))
 
-    def exp(self, x, precision=200):
+    def exp(self, x, precision=100):
         """Calculates the exponential of x using a simple series expansion."""
         result = 1.0
         term = 1.0
