@@ -35,9 +35,9 @@ class Poisson:
 
     def exp(self, x):
         """Calculates the exponential of x using Taylor series expansion."""
-        result = 1
-        term = 1
-        for i in range(1, 20):
+        result = 1.0
+        term = 1.0
+        for i in range(1, 40):
             term *= x / i
             result += term
         return result
