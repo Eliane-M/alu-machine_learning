@@ -52,7 +52,7 @@ class Poisson:
         k = int(k)
 
         # PMF formula: P(k)=(lambtha^k * e^-lambtha) / k!
-        lambtha_pow_k = 1.0
+        lambtha_pow_k = 1
         for _ in range(k):
             lambtha_pow_k *= self.lambtha
 
@@ -70,7 +70,7 @@ class Poisson:
         k = int(k)
 
         # CDF is the sum of PMF from 0 to k
-        cdf_value = 0.0
+        cdf_value = 0
         for i in range(k + 1):
             cdf_value += self.pmf(i)
 
