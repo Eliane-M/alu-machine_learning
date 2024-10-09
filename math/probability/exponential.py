@@ -41,12 +41,12 @@ class Exponential():
         exp_neg_lambtha_x = 1 / self.exp(self.lambtha * x)
         pdf_value = self.lambtha * exp_neg_lambtha_x
         return pdf_value
-    
+
     def cdf(self, x):
         """Calculates the value of the CDF for a given time period x."""
         if x < 0:
             return 0
-        
+
         # CDF formula: F(x) = 1 - e^(-lambtha * x)
         exp_neg_lambtha_x = 1 / self.exp(self.lambtha * x)
         cdf_value = 1 - exp_neg_lambtha_x
