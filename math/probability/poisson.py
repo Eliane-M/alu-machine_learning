@@ -26,7 +26,7 @@ class Poisson:
 
 
     def factorial(self, n):
-        """Calculates the factorial of n (without importing any module)."""
+        """Calculates the factorial of n."""
         if n == 0 or n == 1:
             return 1
         result = 1
