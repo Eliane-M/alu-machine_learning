@@ -22,10 +22,10 @@ class Exponential():
             self.lambtha = float(1 / (sum(data) / len(data)))
 
     def exp(self, x):
-        """Calculates the exponential of x using Taylor series."""
+        """Calculates the exponential of x using a simple series expansion."""
         result = 1.0
         term = 1.0
-        for i in range(1, 100):  # Increase terms for better precision
+        for i in range(1, 100):  # 100 terms for decent precision
             term *= x / i
             result += term
         return result
@@ -34,9 +34,8 @@ class Exponential():
         """Calculates the value of the PDF for a given time period x."""
         if x < 0:
             return 0
-
+        
         # PDF formula: f(x) = lambtha * e^(-lambtha * x)
         exp_neg_lambtha_x = 1 / self.exp(self.lambtha * x)
-
         pdf_value = self.lambtha * exp_neg_lambtha_x
         return pdf_value
