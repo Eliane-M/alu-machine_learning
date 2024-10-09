@@ -28,6 +28,24 @@ class Poisson:
             self.lambtha = float(sum(data) / len(data))
 
 
+    def factorial(self, n):
+        """Calculates the factorial of n (without importing any module)."""
+        if n == 0 or n == 1:
+            return 1
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+
+    def exp(self, x):
+        """Calculates the exponential of x using Taylor series expansion."""
+        result = 1
+        term = 1
+        for i in range(1, 20):  # Limiting to 20 terms for good approximation
+            term *= x / i
+            result += term
+        return result
+
     def pmf(self, k):
         """Calculate the PMF for the Poisson distribution."""
         # Validate k is an integer
@@ -38,9 +56,11 @@ class Poisson:
         k = int(k)
         
         # PMF formula for Poisson distribution: P(k) = (lambtha^k * e^-lambtha) / k!
-        try:
-            pmf_value = (self.lambtha ** k) * (
-                math.exp(-self.lambtha)) / math.factorial(k)
-            return pmf_value
-        except OverflowError:
-            return 0
+        lambtha_pow_k = 1
+        for _ in range(k):
+            lambtha_pow_k *= self.lambtha
+        
+        exp_neg_lambtha = 1 / self.exp(self.lambtha)
+        
+        pmf_value = (lambtha_pow_k * exp_neg_lambtha) / self.factorial(k)
+        return pmf_value
