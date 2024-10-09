@@ -21,20 +21,22 @@ class Exponential():
             # Calculate lambtha as the inverse of the mean of the data
             self.lambtha = float(1 / (sum(data) / len(data)))
 
-    def exp(self, x):
+    def exp(self, x, precision=200):
         """Calculates the exponential of x using a simple series expansion."""
         result = 1.0
         term = 1.0
-        for i in range(1, 100):  # 100 terms for decent precision
+        for i in range(1, precision):
             term *= x / i
             result += term
+            if term < 1e-10:  # Stop if the term becomes very small
+                break
         return result
 
     def pdf(self, x):
         """Calculates the value of the PDF for a given time period x."""
         if x < 0:
             return 0
-        
+
         # PDF formula: f(x) = lambtha * e^(-lambtha * x)
         exp_neg_lambtha_x = 1 / self.exp(self.lambtha * x)
         pdf_value = self.lambtha * exp_neg_lambtha_x
