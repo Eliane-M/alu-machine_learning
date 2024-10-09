@@ -37,7 +37,7 @@ class Poisson:
         """Calculates the exponential of x using Taylor series expansion."""
         result = 1
         term = 1
-        for i in range(1, 100):
+        for i in range(1, 200):
             term *= x / i
             result += term
         return result
