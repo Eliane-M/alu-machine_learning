@@ -4,9 +4,6 @@ This class represents a poisson distribution
 """
 
 
-import math
-
-
 class Poisson:
     """Represents a Poisson distribution."""
 
