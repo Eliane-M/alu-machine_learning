@@ -59,18 +59,11 @@ class Poisson:
 
     def cdf(self, k):
         """Calculates the CDF for a given number of 'successes' k."""
+        if type(k) is not int:
+            k = int(k)
         if k < 0:
             return 0
-
-        # Convert k to an integer if it's not already
-        k = int(k)
-
-        # CDF is the sum of PMF from 0 to k
-        cdf_value = 0
+        cdf = 0
         for i in range(k + 1):
-            lambda_k = self.lambtha ** i
-            e_neg_lambda = self._exp(-self.lambtha)
-            k_factorial = Poisson.factorial(i)
-            cdf_value += (lambda_k * e_neg_lambda) / k_factorial
-
-        return cdf_value
+            cdf += self.pmf(i)
+        return cdf
