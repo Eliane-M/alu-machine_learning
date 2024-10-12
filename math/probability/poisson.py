@@ -45,19 +45,17 @@ class Poisson:
     def pmf(self, k):
         """Calculate the PMF for the Poisson distribution."""
         # Validate k is an integer
+        if type(k) is not int:
+            k = int(k)
         if k < 0:
             return 0
-
-        # Convert k to an integer if it's not already
-        k = int(k)
-
-        # PMF formula: P(k)=(lambtha^k * e^-lambtha) / k!
-        lambda_k = self.lambtha ** k
-        e_neg_lambda = self._exp(-self.lambtha)
-        k_factorial = Poisson.factorial(k)
-
-        pmf_value = (lambda_k * e_neg_lambda) / k_factorial
-        return pmf_value
+        e = 2.7182818285
+        lambtha = self.lambtha
+        factorial = 1
+        for i in range(k):
+            factorial *= i + 1
+        pmf = ((lambtha**k) * (e**-lambtha)) / factorial
+        return pmf
 
     def cdf(self, k):
         """Calculates the CDF for a given number of 'successes' k."""
