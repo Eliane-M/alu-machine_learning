@@ -52,13 +52,11 @@ class Poisson:
         k = int(k)
 
         # PMF formula: P(k)=(lambtha^k * e^-lambtha) / k!
-        lambtha_pow_k = 1
-        for _ in range(k):
-            lambtha_pow_k *= self.lambtha
+        lambda_k = self.lambtha ** k
+        e_neg_lambda = self._exp(-self.lambtha)
+        k_factorial = Poisson.factorial(k)
 
-        exp_neg_lambtha = 1 / self.exp(self.lambtha)
-
-        pmf_value = (lambtha_pow_k * exp_neg_lambtha) / self.factorial(k)
+        pmf_value = (lambda_k * e_neg_lambda) / k_factorial
         return pmf_value
 
     def cdf(self, k):
@@ -72,6 +70,9 @@ class Poisson:
         # CDF is the sum of PMF from 0 to k
         cdf_value = 0
         for i in range(k + 1):
-            cdf_value += self.pmf(i)
+            lambda_k = self.lambtha ** i
+            e_neg_lambda = self._exp(-self.lambtha)
+            k_factorial = Poisson.factorial(i)
+            cdf_value += (lambda_k * e_neg_lambda) / k_factorial
 
         return cdf_value

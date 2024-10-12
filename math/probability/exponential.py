@@ -5,6 +5,7 @@ exponential distribution
 """
 
 
+e = 2.7182818285
 class Exponential():
     """Represents an exponential distribution"""
     def __init__(self, data=None, lambtha=1.):
@@ -36,10 +37,8 @@ class Exponential():
         """Calculates the value of the PDF for a given time period x."""
         if x < 0:
             return 0
-
-        # PDF formula: f(x) = lambtha * e^(-lambtha * x)
-        exp_neg_lambtha_x = 1 / self.exp(self.lambtha * x)
-        pdf_value = self.lambtha * exp_neg_lambtha_x
+        # Calculate PDF using the formula
+        pdf_value = self.lambtha * e ** (-self.lambtha * x)
         return pdf_value
 
     def cdf(self, x):
