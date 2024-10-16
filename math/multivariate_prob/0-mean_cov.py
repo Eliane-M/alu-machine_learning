@@ -17,12 +17,12 @@ def mean_cov(X):
     n, d = X.shape
     if n < 2:
         raise ValueError("X must contain multiple data points")
-    
+
     # Calculate the mean
     mean = np.mean(X, axis=0, keepdims=True)
-    
+
     # Calculate the covariance matrix
     X_centered = X - mean
     cov = np.dot(X_centered.T, X_centered) / (n - 1)
-    
+
     return mean, cov
