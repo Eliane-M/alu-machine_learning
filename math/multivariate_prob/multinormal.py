@@ -41,7 +41,7 @@ class MultiNormal():
         if not isinstance(x, np.ndarray):
             raise TypeError("x must be a numpy.ndarray")
         if x.shape != (self.d, 1):
-            raise ValueError(f"x must have the shape ({self.d}, 1)")
+            raise ValueError("x must have the shape ({}, 1)".format(self.d))
 
         # Calculate PDF
         det_cov = np.linalg.det(self.cov)
