@@ -13,6 +13,9 @@ class MultiNormal():
     class that a multivariate normal distribution
     """
     def __init__(self, data):
+        """
+        class constructor
+        """
         if not isinstance(data, np.ndarray):
             raise TypeError('data must be a 2D numpy.ndarray')
 
@@ -31,7 +34,7 @@ class MultiNormal():
 
     def pdf(self, x):
         """
-        Calculates the probability density function (pdf) of the multivariate normal
+        Calculates the pdf of the multivariate normal
         distribution at the given point x.
         """
         # Validate input x
