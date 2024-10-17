@@ -30,6 +30,10 @@ class MultiNormal():
         self.d = d
 
     def pdf(self, x):
+        """
+        Calculates the probability density function (pdf) of the multivariate normal
+        distribution at the given point x.
+        """
         # Validate input x
         if not isinstance(x, np.ndarray):
             raise TypeError("x must be a numpy.ndarray")
