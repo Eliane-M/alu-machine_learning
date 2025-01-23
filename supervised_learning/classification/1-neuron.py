@@ -35,7 +35,7 @@ class Neuron:
             numpy.ndarray: The weights of the neuron
         '''
         return self.__W
-    
+
     @property
     def b(self):
         '''
@@ -44,7 +44,7 @@ class Neuron:
             float: The bias of the neuron
         '''
         return self.__b
-    
+
     @property
     def A(self):
         '''
@@ -53,4 +53,3 @@ class Neuron:
             float: The activation of the neuron
         '''
         return self.__A
-        
