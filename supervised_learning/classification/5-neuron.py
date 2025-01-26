@@ -73,7 +73,7 @@ class Neuron:
         m = Y.shape[1]
         cost = -1 / m * np.sum(Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A))
         return cost
-    
+
     def evaluate(self, X, Y):
         '''
         Evaluate's the model's predictions
@@ -83,7 +83,7 @@ class Neuron:
         # Convert probability to binary predictions
         predictions = np.where(A >= 0.5, 1, 0)
         return predictions, cost
-    
+
     def gradient_descent(self, X, Y, A, alpha=0.05):
         '''
         Performs gradient descent to update the weights and bias of the neuron
