@@ -14,7 +14,7 @@ def forward_prop(x, layer_sizes=[], activations=[]):
     Creates a forward propagation graph for a neural network
     Args:
         x: Input tensor
-        layer_sizes: List of integers representing the number of neurons in each layer
+        layer_sizes: List of integers = the number of neurons in each layer
         activations: List of activation functions for each layer
     Returns:
         A tensor representing the output of the neural network

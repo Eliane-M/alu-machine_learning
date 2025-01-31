@@ -11,7 +11,9 @@ def create_layer(prev, n, activation):
     '''
     Creates a layer with the given number of neurons and activation function.
     '''
-    initializer = tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG")
+    initializer = tf.contrib.layers.variance_scaling_initializer(
+        mode="FAN_AVG"
+    )
     layer = tf.layers.Dense(units=n, activation=activation,
                             kernel_initializer=initializer, name="layer")
     return layer(prev)
