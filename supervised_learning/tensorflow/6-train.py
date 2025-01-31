@@ -19,6 +19,8 @@ def train(
 ):
     '''
     Builds, trains and saves a neural network classifier
+
+    :return: the path where the model was saved
     '''
     x, y = create_placeholders(X_train.shape[1], Y_train.shape[1])
     y_pred = forward_prop(x, layer_sizes, activations)
@@ -42,10 +44,18 @@ def train(
         '''
         sess.run(init)
         for i in range(iterations + 1):
-            train_loss, train_acc = sess.run([loss, accuracy], feed_dict={x: X_train, y: Y_train})
-            valid_loss, valid_acc = sess.run([loss, accuracy], feed_dict={x: X_valid, y: Y_valid})
+            '''
+            Run training operation; calculate training and validation loss & accuracy
+            '''
+            train_loss, train_acc = sess.run([loss, accuracy],
+                                             feed_dict={x: X_train, y: Y_train})
+            valid_loss, valid_acc = sess.run([loss, accuracy],
+                                             feed_dict={x: X_valid, y: Y_valid})
 
             if i % 100 == 0 or i == iterations:
+                '''
+                Print training and validation loss & accuracy
+                '''
                 print(f"After {i} iterations:")
                 print(f"\tTraining Cost: {train_loss}")
                 print(f"\tTraining Accuracy: {train_acc}")
@@ -53,6 +63,9 @@ def train(
                 print(f"\tValidation Accuracy: {valid_acc}")
 
             if i < iterations:
+                '''
+                Run training operation
+                '''
                 sess.run(train_op, feed_dict={x: X_train, y: Y_train})
 
         return saver.save(sess, save_path)
