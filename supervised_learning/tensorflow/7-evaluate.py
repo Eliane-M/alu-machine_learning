@@ -26,6 +26,9 @@ def evaluate(X, Y, save_path):
 
     # Create new session
     with tf.Session() as session:
+        '''
+        Load the model and evaluate the output
+        '''
         try:
             # Import meta graph and restore weights
             saver = tf.train.import_meta_graph(save_path + '.meta')
