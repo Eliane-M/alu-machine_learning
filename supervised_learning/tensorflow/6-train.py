@@ -45,12 +45,15 @@ def train(
         sess.run(init)
         for i in range(iterations + 1):
             '''
-            Run training operation; calculate training and validation loss & accuracy
+            Run training operation; calculate
+            training and validation loss & accuracy
             '''
-            train_loss, train_acc = sess.run([loss, accuracy],
-                                             feed_dict={x: X_train, y: Y_train})
-            valid_loss, valid_acc = sess.run([loss, accuracy],
-                                             feed_dict={x: X_valid, y: Y_valid})
+            train_loss, train_acc = sess.run(
+                [loss, accuracy], feed_dict={x: X_train, y: Y_train}
+            )
+            valid_loss, valid_acc = sess.run(
+                [loss, accuracy], feed_dict={x: X_valid, y: Y_valid}
+            )
 
             if i % 100 == 0 or i == iterations:
                 '''
