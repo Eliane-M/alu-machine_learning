@@ -23,27 +23,27 @@ def evaluate(X, Y, save_path):
     predictions = None
     accuracy_value = None
     loss_value = None
-    
+
     # Create new session
     with tf.Session() as session:
         try:
             # Import meta graph and restore weights
             saver = tf.train.import_meta_graph(save_path + '.meta')
             saver.restore(session, save_path)
-            
+
             # Get graph
             graph = tf.get_default_graph()
-            
+
             # Get required tensors from collection
             y_pred = graph.get_collection('y_pred')[0]
             loss = graph.get_collection('loss')[0]
             accuracy = graph.get_collection('accuracy')[0]
-            
+
             # Get input tensor (assuming it's named 'x')
             x = graph.get_collection('x')[0]
             # Get target tensor (assuming it's named 'y')
             y = graph.get_collection('y')[0]
-            
+
             # Run evaluation
             predictions, accuracy_value, loss_value = session.run(
                 [y_pred, accuracy, loss],
@@ -52,8 +52,8 @@ def evaluate(X, Y, save_path):
                     y: Y
                 }
             )
-            
+
         except Exception as e:
             raise Exception(f"Error during model evaluation: {str(e)}")
-            
+
     return predictions, accuracy_value, loss_value
