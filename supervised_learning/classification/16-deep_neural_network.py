@@ -1,46 +1,38 @@
 #!/usr/bin/env python3
-'''
-Defines a deep neural network performing binary classification
-'''
+"""creating a deep neural network"""
+
 
 import numpy as np
 
 
 class DeepNeuralNetwork:
-    """
-    Defines a deep neural network performing binary classification.
-    """
+    """deep nn"""
     def __init__(self, nx, layers):
-        """
-        Initializes the deep neural network.
-
-        Parameters:
-        - nx (int): The number of input features.
-        - layers (list): A list representing the number of nodes in each layer of the network.
-        
-        Raises:
-        - TypeError: If nx is not an integer or layers is not a list of positive integers.
-        - ValueError: If nx is less than 1.
-        """
-        # Validate nx
         if not isinstance(nx, int):
             raise TypeError("nx must be an integer")
         if nx < 1:
             raise ValueError("nx must be a positive integer")
-
-        # Validate layers
-        if not isinstance(layers, list) or len(layers) == 0:
+        if not isinstance(layers, list):
             raise TypeError("layers must be a list of positive integers")
-        if not all(isinstance(layer, int) and layer > 0 for layer in layers):
+        if len(layers) < 1:
             raise TypeError("layers must be a list of positive integers")
 
-        self.L = len(layers)  # Number of layers in the network
-        self.cache = {}  # Dictionary to store intermediate values
-        self.weights = {}  # Dictionary to store weights and biases
+        self.L = len(layers)
+        self.cache = {}
+        self.weights = {}
 
-        # Initialize weights and biases using the He et al. method
-        for l in range(1, self.L + 1):
-            layer_input_size = nx if l == 1 else layers[l - 2]
-            self.weights[f"W{l}"] = (np.random.randn(layers[l - 1], layer_input_size)
-                                       * np.sqrt(2 / layer_input_size))
-            self.weights[f"b{l}"] = np.zeros((layers[l - 1], 1))
+        for i in range(self.L):
+            if not isinstance(layers[i], int) or layers[i] < 1:
+                raise TypeError('layers must be a list of positive integers')
+
+            if i == 0:
+                # He-et-al initialization
+                self.weights['W' + str(i + 1)] = np.random.randn(
+                    layers[i], nx) * np.sqrt(2 / nx)
+            else:
+                # He-et-al initialization
+                self.weights['W' + str(i + 1)] = np.random.randn(
+                    layers[i], layers[i - 1]) * np.sqrt(2 / layers[i - 1])
+
+            # Zero initialization
+            self.weights['b' + str(i + 1)] = np.zeros((layers[i], 1))
