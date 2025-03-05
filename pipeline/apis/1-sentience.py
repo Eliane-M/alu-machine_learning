@@ -16,12 +16,16 @@ def sentientPlanets():
     planets = []
 
     while url:
-        response = requests.get(url)
-        data = response.json()
-        for planet in data['results']:
-            if planet['homeworld']!= "":
-                planets.append(planet['name'])
+        response = requests.get(url).json()
 
-        url = data.get('next')
+        for specy in response['results']:
+            classification = specy['classification']
+            designation = specy['designation']
+            if classification == 'sentient' or designation == 'sentient':
+                if specy['homeworld']:
+                    get_planet = requests.get(specy['homeworld']).json()
+                    planets.append(get_planet['name'])
+
+        url = response.get['next']
 
     return planets
