@@ -25,8 +25,8 @@ def availableShips(passengerCount):
         for ship in data['results']:
             if ship['passengers'] != "unknown":
                 try:
-                    if int(ship['passengers'].replace(',', '')) >= passengerCount:
-                        ships.append(ship['name'])
+                    if int(ship['passengers'].replace(
+                        ',', '')) >= passengerCount: ships.append(ship['name'])
                 except ValueError:
                     pass
 
