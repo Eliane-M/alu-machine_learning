@@ -313,7 +313,3 @@ Once you have finished your script, write a blog post describing your approach t
 *   Final thoughts
 
 ---
-
-## Author
-
-- **Pierre Beaujuge** - [PierreBeaujuge](https://github.com/PierreBeaujuge)

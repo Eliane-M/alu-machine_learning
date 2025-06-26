@@ -231,7 +231,3 @@ Write the function `def baum_welch(Observations, Transition, Emission, Initial, 
 _With very little data (only 365 observations), we have been able to get a pretty good estimate of the transition and emission probabilities. We have not used a larger sample size in this example because our implementation does not utilize logarithms to handle values approaching 0 with the increased sequence length_
 
 ---
-
-## Author
-
-- **Pierre Beaujuge** - [PierreBeaujuge](https://github.com/PierreBeaujuge)

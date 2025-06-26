@@ -441,7 +441,3 @@ _Be careful of off-by-one errors!_
 ![](./0x00-images/img_2.png)
 
 ---
-
-## Author
-
-- **Pierre Beaujuge** - [PierreBeaujuge](https://github.com/PierreBeaujuge)
